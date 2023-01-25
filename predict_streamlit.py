@@ -22,7 +22,7 @@ import json
 
 import matplotlib.gridspec as gridspec
 from matplotlib import pyplot as plt
-%matplotlib inline
+
 from mpl_toolkits.axes_grid1 import ImageGrid
 import itertools
 import cv2
