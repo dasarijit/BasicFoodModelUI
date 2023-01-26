@@ -76,7 +76,10 @@ def app():
             #if image.mode == "RGB":
             #    image = image.convert("L")
             # Convert to numpy array and resize.
-            image = np.array(image)
+            image = Image.img_to_array(image)
+            image = np.expand_dims(image, axis=0)
+            image /= 255.
+            #image = np.array(image)
             #image = np.resize(image,(1,784))
             
             # Get prediction.
