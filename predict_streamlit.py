@@ -13,14 +13,6 @@ from io import StringIO
 #Import tensorflow libraries
 import tensorflow as tf
 
-# Print versions
-print(f'Pandas version: {pd.__version__}')
-print(f'Numpy version: {np.__version__}')
-print(f'Scikit-learn version: {sklearn.__version__}')
-print(f'Tensorflow version: {tf.__version__}')
-print(f'CV version: {cv2.__version__}')
-
-
 def footer_markdown():
     footer="""
     <style>
