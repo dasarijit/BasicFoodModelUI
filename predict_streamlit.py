@@ -67,7 +67,8 @@ def app():
     if uploaded_file is not None:
         #if "mnist" in model_type:
             image = Image.open(uploaded_file)
-            image = image.load_img(image, target_size=(224, 224))
+            image = image.resize((224,224), Image.NEAREST)
+            #image = image.load_img(image, target_size=(224, 224))
             image = image.img_to_array(image)                    
             image = np.expand_dims(image, axis=0) #tensor-n dimen  4      
             image /= 255.                                      
