@@ -68,7 +68,7 @@ def app():
         #if "mnist" in model_type:
             img = Image.open(uploaded_file)
             #img = image.resize((224,224), Image.NEAREST)
-            image = image.load_img(img, target_size=(224, 224))
+            img = image.load_img(img, target_size=(224, 224))
             img = image.img_to_array(img)                    
             img = np.expand_dims(img, axis=0) #tensor-n dimen  4      
             img /= 255.                                      
