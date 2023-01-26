@@ -77,7 +77,7 @@ def app():
             #    image = image.convert("L")
             # Convert to numpy array and resize.
             image = np.array(image)
-            image = np.resize(image,(1,784))
+            #image = np.resize(image,(1,784))
             
             # Get prediction.
             yhat = loaded_model.predict(image)
