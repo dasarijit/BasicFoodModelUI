@@ -65,28 +65,22 @@ def app():
     
     uploaded_file = st.file_uploader("Choose an image...", type="jpg")
     if uploaded_file is not None:
-        #if "mnist" in model_type:
-            img = Image.open(uploaded_file)
-            #img = image.resize((224,224), Image.NEAREST)
-            img = image.load_img(img, target_size=(224, 224))
-            img = image.img_to_array(img)                    
-            img = np.expand_dims(img, axis=0) #tensor-n dimen  4      
-            img /= 255.                                      
-         #   image = image.resize((28,28), Image.NEAREST)
-            st.img(img, caption='Uploaded Image.', use_column_width=False)
+            image = Image.open(uploaded_file)
+            image = image.resize((224,224), Image.NEAREST)
+            st.image(image, caption='Uploaded Image.', use_column_width=False)
             st.write("")
             st.write("Identifying...")
             # Convert to grayscale if RGB.
-            print(img.size)
-            print(img.mode)
-          #  if image.mode == "RGB":
-           #     image = image.convert("L")
+            print(image.size)
+            print(image.mode)
+            #if image.mode == "RGB":
+            #    image = image.convert("L")
             # Convert to numpy array and resize.
-            #image = np.array(image)
-            #image = np.resize(image,(1,784))
+            image = np.array(image)
+            image = np.resize(image,(1,784))
             
             # Get prediction.
-            yhat = loaded_model.predict(img)
+            yhat = loaded_model.predict(image)
             # Convert the probabilities to class labels
             label = np.argmax(yhat, axis=1)[0]
             st.write('%s' % (label) )
