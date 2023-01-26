@@ -65,25 +65,25 @@ def app():
     
     uploaded_file = st.file_uploader("Choose an image...", type="jpg")
     if uploaded_file is not None:
-            image = Image.open(uploaded_file)
-            image = image.resize((224,224), Image.NEAREST)
-            st.image(image, caption='Uploaded Image.', use_column_width=False)
+            img = Image.open(uploaded_file)
+            img = image.resize((224,224), Image.NEAREST)
+            st.image(img, caption='Uploaded Image.', use_column_width=False)
             st.write("")
             st.write("Identifying...")
             # Convert to grayscale if RGB.
-            print(image.size)
-            print(image.mode)
+            print(img.size)
+            print(img.mode)
             #if image.mode == "RGB":
             #    image = image.convert("L")
             # Convert to numpy array and resize.
-            image = Image.img_to_array(image)
-            image = np.expand_dims(image, axis=0)
-            image /= 255.
+            img = image.img_to_array(img)
+            img = np.expand_dims(img, axis=0)
+            img /= 255.
             #image = np.array(image)
             #image = np.resize(image,(1,784))
             
             # Get prediction.
-            yhat = loaded_model.predict(image)
+            yhat = loaded_model.predict(img)
             # Convert the probabilities to class labels
             label = np.argmax(yhat, axis=1)[0]
             st.write('%s' % (label) )
