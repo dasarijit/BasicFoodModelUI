@@ -79,7 +79,7 @@ def app():
             #image = np.resize(image,(1,784))
             
             # Get prediction.
-            yhat = loaded_model.predict_class((loaded_model),(image), True)
+            yhat = loaded_model.predict(image)
             # Convert the probabilities to class labels
             label = np.argmax(yhat, axis=1)[0]
             st.write('%s' % (label) )
