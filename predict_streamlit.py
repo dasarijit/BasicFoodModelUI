@@ -65,8 +65,9 @@ def app():
     
     uploaded_file = st.file_uploader("Choose an image...", type="jpg")
     if uploaded_file is not None:
-            img = Image.open(uploaded_file)
-            img = image.resize((224,224), Image.NEAREST)
+            #img = Image.open(uploaded_file)
+            #img = image.resize((224,224), Image.NEAREST)
+            img = image.load_img(uploaded_file, target_size=(224, 224))
             st.image(img, caption='Uploaded Image.', use_column_width=False)
             st.write("")
             st.write("Identifying...")
