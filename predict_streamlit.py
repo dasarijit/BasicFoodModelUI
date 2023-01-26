@@ -41,7 +41,7 @@ def footer_markdown():
     }
     </style>
     <div class="footer">
-    <p>Developed by <a style='display: block; text-align: center;' >Group 5 - AIML</a></p>
+    <p>Developed by <a style='display: block; text-align: center;' > Lomesh, Ivan, Arijit and Puneet [Group 5 - GL AIML Course] </a></p>
     </div>
     """
     return footer
@@ -56,8 +56,8 @@ def app():
     hdf5_file_list = [file for file in os.listdir("./model") if file.endswith(".hdf5")]
     hdf5_file_names = [os.path.splitext(file)[0] for file in hdf5_file_list]
     
-    st.title("Food Prediction Basic UI")
-    st.header("A Streamlit based Web UI To Get Predictions From Trained Models")
+    st.title("Food Prediction App")
+    st.header("Demonstration of CNN Trained Models using Food-101 dataset")
     st.markdown(footer_markdown(),unsafe_allow_html=True)
     model_type = st.radio("Choose trained model to load...", hdf5_file_names)
     
@@ -86,8 +86,11 @@ def app():
             # Get prediction.
             yhat = loaded_model.predict(img)
             # Convert the probabilities to class labels
+            food_list=['apple_pie', 'chocolate_cake', 'donuts', 'falafel', 'french_fries', 'hot_dog', 'ice_cream', 'nachos', 'onion_rings', 'pancakes', 'pizza', 'ravioli', 'samosa', 'spring_rolls', 'strawberry_shortcake', 'tacos', 'waffles']
+            food_list.sort()
             label = np.argmax(yhat, axis=1)[0]
-            st.write('%s' % (label) )
+            pred_value = food_list[label]
+            st.write('%s' % (pred_value) )
             
 
 if __name__=='__main__':
